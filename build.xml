@@ -1,0 +1,66 @@
+<project name="MyProject" default="compress" basedir=".">
+    <property name="builddir" value="${basedir}/build"/>
+    <property name="distdir" value="${basedir}/dist"/>
+    <property name="composer" value="${basedir}/composer.phar"/>
+
+    <target name="php-check">
+        <condition property="php" value="php">
+            <not>
+                <isset property="${php}"/>
+            </not>
+        </condition>
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="${distdir}"/>
+    </target>
+
+    <target name="composer-check" depends="prepare">
+        <available file="${composer}" property="composer.present"/>
+    </target>
+
+    <target name="composer-download" depends="composer-check" unless="composer.present">
+        <property name="composer.noselfupdate" value="true"/>
+        <get src="https://getcomposer.org/composer.phar" dest="${composer}"/>
+    </target>
+
+    <target name="composer-update" depends="php-check,composer-download">
+        <exec executable="${php}">
+            <arg value="${composer}"/>
+            <arg value="update"/>
+        </exec>
+    </target>
+
+    <target name="concat-js">
+        <concat destfile="${distdir}/js/jsGraph.js">
+            <fileset dir="${basedir}/src/js" includes="*.js"/>
+        </concat>
+    </target>
+
+    <target name="concat-css">
+        <concat destfile="${distdir}/css/jsGraph.css">
+            <fileset dir="${basedir}/src/css" includes="*.css"/>
+        </concat>
+    </target>
+
+    <target name="compress-js" depends="composer-update,concat-js">
+        <java jar="${basedir}/vendor/nervo/yuicompressor/yuicompressor.jar" fork="true">
+            <arg value="${distdir}/js/jsGraph.js"/>
+            <arg value="-o"/>
+            <arg value="jsGraph.min.js"/>
+        </java>
+        <move tofile="${distdir}/js/jsGraph.min.js" file="jsGraph.min.js" overwrite="true"/>
+    </target>
+    <target name="compress-css" depends="composer-update,concat-css">
+        <java jar="${basedir}/vendor/nervo/yuicompressor/yuicompressor.jar" fork="true">
+            <arg value="${distdir}/css/jsGraph.css"/>
+            <arg value="-o"/>
+            <arg value="jsGraph.min.css"/>
+        </java>
+        <move tofile="${distdir}/css/jsGraph.min.css" file="jsGraph.min.css" overwrite="true"/>
+    </target>
+
+    <target name="compress" depends="compress-js,compress-css">
+
+    </target>
+</project>

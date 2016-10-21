@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+    <link rel="stylesheet" href="./build/tools/qunit.css">
+    <link rel="stylesheet" href="./src/css/jsGraph.css" crossorigin="anonymous">
+    <script src="./build/tools/qunit.js"></script>
+    <script src="https://raw.githubusercontent.com/alex-seville/blanket/master/dist/qunit/blanket.min.js"></script>
+
+    <script src="./vendor/components/jquery/jquery.min.js"></script>
+    <script src="http://codepb.github.io/jquery-template/jquery.loadTemplate-0.4.3.js"></script>
+
+    <script src="./src/js/jsGraphFactory.js" data-cover></script>
+    <script src="./src/js/jsGraphNode.js" data-cover></script>
+    <script src="./src/js/jsGraphEdge.js" data-cover></script>
+    <script src="./src/js/jsGraph.js" data-cover></script>
+
+    <script src="./tests/jsGraphTest.js"></script>
+    <script src="./tests/jsGraphNodeTest.js"></script>
+    <script src="./tests/jsGraphEdgeTest.js"></script>
+    <script src="./tests/jsGraphIntegrationTest.js"></script>
+
+    <script type="text/html" id="template">
+        <div class="graph-node" data-template-bind='[{"attribute": "id", "value": "id"}]' data-content="name">
+        </div>
+    </script>
+    <script type="text/html" id="line">
+        <div class="graph-edge" data-template-bind='[{"attribute": "id", "value": "id"}]'>
+            <div data-content="line"></div>
+        </div>
+    </script>
+</head>
+<body>
+<div id="integrationTestGraph" style="width:800px;height:800px;background-color:#EFEFEF;"></div>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+</body>
+</html>

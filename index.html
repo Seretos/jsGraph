@@ -1,0 +1,91 @@
+<html>
+<head>
+    <script src="./vendor/components/jquery/jquery.min.js"></script>
+    <script src="http://codepb.github.io/jquery-template/jquery.loadTemplate-0.4.3.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <script src="./src/js/jsGraphFactory.js"></script>
+    <script src="./src/js/jsGraphNode.js"></script>
+    <script src="./src/js/jsGraphEdge.js"></script>
+    <script src="./src/js/jsGraph.js"></script>
+    <link rel="stylesheet" href="./src/css/jsGraph.css" crossorigin="anonymous">
+
+    <script type="text/html" id="template">
+        <div class="graph-node" data-template-bind='[{"attribute": "id", "value": "id"}]' data-content="name">
+        </div>
+    </script>
+    <script type="text/html" id="line">
+        <div class="graph-edge" data-template-bind='[{"attribute": "id", "value": "id"}]'>
+            <div data-content="line"></div>
+        </div>
+    </script>
+</head>
+<body>
+<div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">Panel Heading</div>
+                <div class="panel-body">Panel Content</div>
+            </div>
+        </div>
+        <div class="col-lg-11">
+            <div id="myGraph" class="graph">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">Panel Heading</div>
+                <div class="panel-body">Panel Content</div>
+            </div>
+        </div>
+        <div class="col-lg-11">
+            <div id="myGraph2" class="graph">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        graph = $('#myGraph').jsGraph();
+        node1 = graph.addNode('#template', {id: 'node1', name: 'node 1'});
+        node2 = graph.addNode('#template', {id: 'node2', name: 'node 2'});
+
+        graph.addEdge('#line', node1, node2, {line: 'line1'});
+
+        graph = $('#myGraph2').jsGraph();
+        node1 = graph.addNode('#template', {id: 'node11', name: 'Node 1 1'});
+        //node1 = graph.addNode('test', 'test');
+    });
+    //    node2 = graph.addNode('#template', {id: 'node2', name: 'Node 2'});
+    //    node3 = graph.addNode('#template', {id: 'node3', name: 'Node 3'});
+    //    node4 = graph.addNode('#template', {id: 'node4', name: 'Node 4'});
+    //    node5 = graph.addNode('#template', {id: 'node5', name: 'Node 5'});
+    //    node6 = graph.addNode('#template', {id: 'node6', name: 'Node 6'});
+    //    node1.setPosition(200, 200);
+    //    node2.setPosition(500, 500);
+    //    node3.setPosition(1, 500);
+    //    node4.setPosition(500, 1);
+    //    node5.setPosition(1, 1);
+    //    node6.setPosition(200, 500);
+    //    graph.addEdge('#line', node1, node2, {line: 'line1'});
+    //    graph.addEdge('#line', node1, node3, {line: 'line2'});
+    //    graph.addEdge('#line', node1, node4, {line: 'line3'});
+    //    graph.addEdge('#line', node1, node5, {line: 'line4'});
+    //    graph.addEdge('#line', node6, node1, {line: 'line5'});
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "jquery/js-graph",
+  "description": "a javascript graph visualization libary",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arne von Appen"
+    }
+  ],
+  "require": {
+    "components/jquery": "3.1.*"
+  },
+  "require-dev": {
+    "nervo/yuicompressor": "2.4.*"
+  }
+}
