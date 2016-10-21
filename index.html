@@ -16,12 +16,41 @@
     <script src="./src/js/jsGraph.js"></script>
     <link rel="stylesheet" href="./src/css/jsGraph.css" crossorigin="anonymous">
 
+    <style>
+
+    </style>
+
     <script type="text/html" id="template">
-        <div class="graph-node" data-template-bind='[{"attribute": "id", "value": "id"}]' data-content="name">
+        <div class="graph-node panel panel-default unselectable"
+             data-template-bind='[{"attribute": "id", "value": "id"}]'>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img
+                                src="https://www.office-profishop.com/templates/udo_esser/img/hilfsgrafiken/leitz/infoseite_leitz_icon/Icon-einfach.png"
+                                width="50" height="50" alt="QR" onclick="false"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="http://www.google.de" target="_blank" data-content="name"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1">
+                        <div style="width:10px;height:10px;background-color:red;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </script>
     <script type="text/html" id="line">
         <div class="graph-edge" data-template-bind='[{"attribute": "id", "value": "id"}]'>
+            <div data-content="line"></div>
+        </div>
+    </script>
+    <script type="text/html" id="lineDotted">
+        <div class="graph-edge-dotted" data-template-bind='[{"attribute": "id", "value": "id"}]'>
             <div data-content="line"></div>
         </div>
     </script>
@@ -43,49 +72,32 @@
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-lg-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Panel Heading</div>
-                <div class="panel-body">Panel Content</div>
-            </div>
-        </div>
-        <div class="col-lg-11">
-            <div id="myGraph2" class="graph">
-
-            </div>
-        </div>
-    </div>
 </div>
 <script>
     $(document).ready(function () {
         graph = $('#myGraph').jsGraph();
         node1 = graph.addNode('#template', {id: 'node1', name: 'node 1'});
-        node2 = graph.addNode('#template', {id: 'node2', name: 'node 2'});
-
+        node2 = graph.addNode('#template', {id: 'node2', name: 'Node 2'});
+        node3 = graph.addNode('#template', {id: 'node3', name: 'Node 3'});
+        node4 = graph.addNode('#template', {id: 'node4', name: 'Node 4'});
+        node5 = graph.addNode('#template', {id: 'node5', name: 'Node 5'});
+        node6 = graph.addNode('#template', {id: 'node6', name: 'Node 6'});
+        node1.setPosition(200, 200);
+        node2.setPosition(500, 500);
+        node3.setPosition(1, 500);
+        node4.setPosition(500, 1);
+        node5.setPosition(1, 1);
+        node6.setPosition(200, 500);
         graph.addEdge('#line', node1, node2, {line: 'line1'});
+        graph.addEdge('#line', node1, node3, {line: 'line2'});
+        graph.addEdge('#line', node1, node4, {line: 'line3'});
+        graph.addEdge('#line', node1, node5, {line: 'line4'});
+        graph.addEdge('#line', node6, node1, {line: 'line5'});
+        graph.addEdge('#lineDotted', node4, node2, {line: 'line6'});
 
-        graph = $('#myGraph2').jsGraph();
-        node1 = graph.addNode('#template', {id: 'node11', name: 'Node 1 1'});
-        //node1 = graph.addNode('test', 'test');
     });
-    //    node2 = graph.addNode('#template', {id: 'node2', name: 'Node 2'});
-    //    node3 = graph.addNode('#template', {id: 'node3', name: 'Node 3'});
-    //    node4 = graph.addNode('#template', {id: 'node4', name: 'Node 4'});
-    //    node5 = graph.addNode('#template', {id: 'node5', name: 'Node 5'});
-    //    node6 = graph.addNode('#template', {id: 'node6', name: 'Node 6'});
-    //    node1.setPosition(200, 200);
-    //    node2.setPosition(500, 500);
-    //    node3.setPosition(1, 500);
-    //    node4.setPosition(500, 1);
-    //    node5.setPosition(1, 1);
-    //    node6.setPosition(200, 500);
-    //    graph.addEdge('#line', node1, node2, {line: 'line1'});
-    //    graph.addEdge('#line', node1, node3, {line: 'line2'});
-    //    graph.addEdge('#line', node1, node4, {line: 'line3'});
-    //    graph.addEdge('#line', node1, node5, {line: 'line4'});
-    //    graph.addEdge('#line', node6, node1, {line: 'line5'});
+
+    $('#myGraph').animate({'zoom': 5.1}, 'slow');
 </script>
 </body>
 </html>

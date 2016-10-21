@@ -7,17 +7,32 @@ div.graph {
 }
 
 div.graph-node {
-    border: 1px solid black;
-    background-color: white;
     display: inline;
-    padding: 5px;
     position: absolute;
     z-index: 2;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
 }
 
 div.graph-edge {
-    border-bottom: 1px dotted black;
+    border-bottom: thick solid black;
     position: absolute;
     text-align: center;
     z-index: 1;
+}
+
+div.graph-edge-dotted {
+    border-bottom: thick dotted black;
+    position: absolute;
+    text-align: center;
+    z-index: 1;
+}
+
+div.graph-node img {
+    pointer-events: none;
 }
