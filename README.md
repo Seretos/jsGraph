@@ -3,6 +3,8 @@ jquery/js-graph
 
 this package helps to visualize a graph with html elements
 
+![simple example](docs/simple.png)
+
 Installation
 ------------
 
