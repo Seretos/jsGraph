@@ -1,4 +1,4 @@
-<project name="MyProject" default="compress" basedir=".">
+<project name="jsGraph" default="compress" basedir=".">
     <property name="builddir" value="${basedir}/build"/>
     <property name="distdir" value="${basedir}/dist"/>
     <property name="composer" value="${basedir}/composer.phar"/>
